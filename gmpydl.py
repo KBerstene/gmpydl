@@ -176,7 +176,7 @@ def download_song(api, sid, update_dl):
   f = _get_normalized_file_path(path, song)
   if os.path.isfile(f):
     if not OVERWRITE:
-      log("File {} already exists - marking as downloaded (enable Overwrite to re-download)".format(f))
+      log(u"File {} already exists - marking as downloaded (enable Overwrite to re-download)".format(f))
       if update_dl:
         _update_dl(sid)
       return True
@@ -188,6 +188,9 @@ def download_song(api, sid, update_dl):
     log(str(e) + " ID: " + song['id'] + " - " + song['title'])
     return False
   filepath = _get_normalized_file_path(path, song)
+
+  if not os.path.exists(os.path.dirname(filepath)):
+    os.makedirs(os.path.dirname(filepath))
   try:
     with open(filepath, 'wb') as f:
       f.write(audio)

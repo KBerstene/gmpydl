@@ -17,6 +17,13 @@ Requirements
 * gmusicapi (see above for installation via pip)
 * A Google account with some music
 
+Installing gmusicapi
+-----
+gmusicapi removed support for Python 2, so until gmpydl gets updated to Python 3, install an older version of the gmusicapi:
+
+    pip2 install mock==0.8.0       # There's probably a more recent version, but mock was giving me python2 issues as well
+    pip2 install gmusicapi==12.0.0
+
 
 Usage
 -----
